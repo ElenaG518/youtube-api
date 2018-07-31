@@ -13,7 +13,7 @@ button {
 .hero {
   width: 320px;
   height: 180px;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
 }
 
 .hero img {
@@ -24,7 +24,7 @@ button {
 .thumbnail {
   display: inline-block;
   cursor: pointer;
-  height: 200px;
+  height: 100%;
 
  }
 
@@ -35,3 +35,4 @@ a.thumbnail:hover {
 .thumbnail img {
  max-height: 100%;
 }
+  
