@@ -1,36 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <title>JSON YouTube API example</title>
-        <script
-          src="https://code.jquery.com/jquery-3.2.1.min.js"
-          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-          crossorigin="anonymous"></script>
         <link href="index.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-      <main>
+      <header role="banner">
         <h1>Search repos by name on YouTube</h1>
-          <form action="#" class="js-search-form">
-            <label for="query"></label>
-            <input type="text" class="js-query">
-            <button type="submit">Search</button>
-          </form>
-
+      </header>  
+      <main role="main">
+        <form action="#" class="js-search-form">
+          <label for="query"></label>
+          <input type="text" class="js-query" aria-labelledby="user search term">
+          <button type="submit">Search</button>
+        </form>
+<!-- aria-live tells the screen reader to watch this part of the DOM
+        for changes. We add `hidden` so that users won't be confused 
+        by the presence of an empty element.-->
+        <div class="js-output" aria-live="assertive" hidden>
           <h2>Results</h2>
-          <div class="js-search-results">
-
+          <div class="hero">
           </div>
+          <div class="thumbnails">
+          </div>  
+        </div>
 
-          <!-- The Modal/Lightbox -->
-          <div id="myModal" class="modal">
-            <span class="close cursor" onclick="closeModal()">&times;</span>
-            <div class="modal-content">
-
-          </div>
+          
       </main>
+      <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
       <script src="index.js"></script>
     </body>
 </html>
