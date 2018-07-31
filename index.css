@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   padding-top: 50px;
 }
@@ -5,13 +9,29 @@ body {
 button {
     margin: 10px;
   }
-/* Create four equal columns that floats next to eachother */
 
-.image {
-  display: inline-block;
-  width: 33%;
+.hero {
+  width: 320px;
+  height: 180px;
+  margin-bottom: 20px;
 }
 
-img:hover {
-  box-shadow: 2px 2px;
+.hero img {
+  height: 100%
+}
+/* Create four equal columns that floats next to eachother */
+
+.thumbnail {
+  display: inline-block;
+  cursor: pointer;
+  height: 200px;
+
+ }
+
+a.thumbnail:hover {
+  box-shadow: 5px 5px 5px gray;
+}
+
+.thumbnail img {
+ max-height: 100%;
 }

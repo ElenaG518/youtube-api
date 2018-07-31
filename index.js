@@ -12,27 +12,29 @@ function getDataFromApi(searchTerm, callback) {
 }
 
 function renderResult(result, index) {
-  console.log(result);
+  console.log(`renderResult function ran`);
   return `
-    <div class="image">
-     <a href="https://www.youtube.com/watch?v=${result.id
-        .videoId}" target="_blank">
+     <a class="thumbnail" href="https://www.youtube.com/watch?v=${result.id.videoId}" target="_blank">
       <img src="${result.snippet.thumbnails.medium.url}"
      alt="${result.snippet.title}" data-index="${index}"></a>
      <p><a href="https://www.youtube.com/channel/${result.snippet
         .channelId}" target="_blank">more from this channel </a></p>
-     </div>
-   
     `;
   }
 
+function renderHero(src, alt) {
+  console.log(`renderHero function ran with src ${src} and with alt ${alt}`);
+  
+    $('.hero').html(`<img src="${src}" alt="${alt}">`);
+}
 
 function displayGitHubSearchData(data) {
+  console.log(data);
   const results = data.items.map((item, index) => renderResult(item, index));
   console.log(`display results ${results}`);
-  $('.js-output')
-      .prop('hidden', false)
-      .html(results);
+  $('.js-output').prop('hidden', false);
+  // $('.hero').html(hero);
+  $('.thumbnails').html(results);
 }
 
 function showErr(err) {
@@ -58,5 +60,13 @@ $(function() {
     queryTarget.val("");
     getDataFromApi(query, displayGitHubSearchData);
   });
-})
 
+$('.thumbnails').on('click', '.thumbnail', function(event) {
+  console.log(`thumbnail clicked!`);
+  let address = $(this).find('img').attr('src');
+  let alter = $(this).find('img').attr('alt');
+  console.log(`this is address ${address} and this is alter ${alter}`);
+  renderHero(address, alter);
+});
+  
+})
