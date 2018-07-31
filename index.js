@@ -7,7 +7,8 @@ function getDataFromApi(searchTerm, callback) {
     key: 'AIzaSyDE2RS2B27KuUp-G6TWpRFtLpySC36Zf3c',
     q: `${searchTerm} in:name`,
    }
-  $.getJSON(YOUTUBE_SEARCH_URL, query, callback);
+  $.getJSON(YOUTUBE_SEARCH_URL, query, callback)
+      .fail(showErr);
 }
 
 function renderResult(result, index) {
@@ -29,10 +30,21 @@ function renderResult(result, index) {
 function displayGitHubSearchData(data) {
   const results = data.items.map((item, index) => renderResult(item, index));
   console.log(`display results ${results}`);
-  $('.js-search-results').html(results);
-
+  $('.js-output')
+      .prop('hidden', false)
+      .html(results);
 }
 
+function showErr(err) {
+  const outputElem = $('.js-output');
+  const errMsg = (
+    `<p>We couldn't find any videos related to your search term!</p>`
+  ); 
+
+  outputElem
+    .prop('hidden', false)
+    .html(errMsg);
+}
 
 
 
@@ -47,6 +59,4 @@ $(function() {
     getDataFromApi(query, displayGitHubSearchData);
   });
 })
-
-
 

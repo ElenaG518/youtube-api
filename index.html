@@ -7,17 +7,22 @@
         <link href="index.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-      <main role="main">
+      <header role="banner">
         <h1>Search repos by name on YouTube</h1>
+      </header>  
+      
+        <main role="main">
+        
           <form action="#" class="js-search-form">
             <label for="query"></label>
             <input type="text" class="js-query" aria-labelledby="user search term">
             <button type="submit">Search</button>
           </form>
-
-          <h2>Results</h2>
-          <div class="js-search-results">
-
+<!-- aria-live tells the screen reader to watch this part of the DOM
+        for changes. We add `hidden` so that users won't be confused 
+        by the presence of an empty element.-->
+          <div class="js-output" aria-live="assertive" hidden>
+            <h2>Results</h2>
           </div>
 
           
